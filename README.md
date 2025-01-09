@@ -13,9 +13,8 @@ This is a simple memory game implemented using HTML, CSS, and JavaScript. The pl
   - If the order is correct, the message "Excellent memory!" is displayed.
   - If the order is wrong, the message "Wrong order!" is displayed, and the correct order is revealed.
 
----
-
 ## Project Structure
+
 project-folder/
 ├── index.html         # Main HTML file
 ├── css/
@@ -27,8 +26,6 @@ project-folder/
 │       └── en/
 │           └── user.js # Message constants
 └── README.md          # Project documentation
-
----
 
 ## How to Use
 
