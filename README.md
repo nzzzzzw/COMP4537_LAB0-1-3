@@ -1,5 +1,5 @@
 # COMP4537 Lab Work
-# Button Memory Game
+# Lab 0: Button Memory Game
 
 This is a simple memory game implemented using HTML, CSS, and JavaScript. The player is asked to remember the order of buttons that are displayed on the screen. After the buttons are scrambled and their labels hidden, the player must click them in the correct order to win the game.
 
@@ -32,4 +32,4 @@ This is a simple memory game implemented using HTML, CSS, and JavaScript. The pl
 1. Clone this repository
 2. Navigate to the project directory and open the index.html file in your browser.
 3. Enter a number (between 3 and 7) in the input box and click Go.
-4. Wait for the buttons to scramble, then click them in the original order.
+4. Wait for the buttons to scramble, then click them in the original order. 
