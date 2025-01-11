@@ -11,7 +11,7 @@ This is a simple memory game implemented using HTML, CSS, and JavaScript. The pl
 - **Memory Test**: The labels on the buttons are hidden, and users must recall the correct order by clicking the buttons.
 - **Feedback**:
   - If the order is correct, the message "Excellent memory!" is displayed.
-  - If the order is wrong, the message "Wrong order!" is displayed, and the correct order is revealed.
+  - If the order is wrong, the message "Wrong order!" is displayed.
 
 ## Project Structure
 

@@ -18,6 +18,7 @@ class Button{
             const button = document.createElement("button");
             button.textContent = `${i}`;
             button.className = "dynamic-button";
+            button.setAttribute("disabled", "true");
             button.style.backgroundColor = this.getRandomColor();
             this.correctOrder.push(i);
             container.appendChild(button);
@@ -44,6 +45,7 @@ class Game{
         const windowHeight = window.innerHeight;
 
         buttons.forEach(button => {
+            button.setAttribute("disabled", "true");
             const randomTop = Math.floor(Math.random() * (windowHeight - button.offsetHeight));
             const randomLeft = Math.floor(Math.random() * (windowWidth - button.offsetWidth));
             button.style.position = "absolute";
@@ -58,25 +60,35 @@ class Game{
             button.textContent = "";
         });
     }
-
     enableMemoryTest() {
         const buttons = document.querySelectorAll(".dynamic-button");
-        let userClicks = []; 
-        let currentIndex = 0; 
-
+        buttons.forEach(button => {
+            button.removeAttribute("disabled");
+        });
+        let userClicks = [];
+        let currentIndex = 0;
+        let gameOver = false; 
+    
         buttons.forEach(button => {
             button.addEventListener("click", () => {
-                const buttonIndex = Array.from(buttons).indexOf(button) + 1;
+                if (gameOver) return; 
+    
+                const buttonIndex = Array.from(buttons).indexOf(button) + 1; 
                 if (buttonIndex === this.buttonInstance.correctOrder[currentIndex]) {
                     userClicks.push(buttonIndex); 
-                    button.textContent = buttonIndex;
+                    button.textContent = buttonIndex; 
                     currentIndex++; 
+    
                     if (userClicks.length === this.buttonInstance.correctOrder.length) {
-                        alert(messages.correctOrder);
+                        alert(messages.correctOrder); 
+                        gameOver = true; 
                     }
                 } else {
                     alert(messages.wrongOrder);
-                    window.location.reload(); 
+                    gameOver = true; 
+                    buttons.forEach((btn, index) => {
+                        btn.textContent = this.buttonInstance.correctOrder[index];
+                    });
                 }
             });
         });
