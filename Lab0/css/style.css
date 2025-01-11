@@ -1,4 +1,9 @@
 .dynamic-button {
-  height: 5em; /* Set button height */
-  width: 10em; /* Set button width */
+  height: 5em; 
+  width: 10em; 
+}
+#button-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
 }
