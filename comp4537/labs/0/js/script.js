@@ -12,7 +12,7 @@ class Button{
     }
     createButton(input) {
         const container = document.getElementById("button-container");
-        container.innerHTML = "";
+        container.innerHTML = ""; 
         this.correctOrder = [];
         for (let i = 1; i <= input; i++) {
             const button = document.createElement("button");
