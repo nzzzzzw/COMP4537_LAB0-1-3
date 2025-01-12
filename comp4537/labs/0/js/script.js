@@ -1,9 +1,9 @@
 /**
-DISCLOSURE: help of ChatGPT. 
-- Clarifications were sought on the usage of specific BOM (Browser Object Model) and DOM (Document Object Model) functions.
+DISCLOSURE: help of ChatGPT for checking some js,bom and dom functions
 - Key areas of inquiry included:
   - Dynamically positioning buttons within the viewport using the `shuffleButtons` method.
   - Implementing game logic for sequence validation in the `enableMemoryTest` method.
+  - Implement delays for better game flow through promises and `async/await`.
 */
 
 class Button{
