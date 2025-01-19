@@ -1,34 +1,40 @@
+/**
+DISCLOSURE: help of ChatGPT for checking some js,bom and dom functions
+Key functionalities implemented:
+- JSON strings in localStorage.
+- Parsing JSON strings from localStorage.
+- JavaScript's Date object like isplaying and updating time.
+*/
 class NoteReader {
     constructor(notes, timestamp) {
         this.notesContainer = document.getElementById(notes);
         this.timestampElement = document.getElementById(timestamp);
-
         this.init();
     }
 
-    // 初始化逻辑
+    // init function to load notes and update timestamp
     init() {
         this.loadNotes();
-        setInterval(() => this.loadNotes(), 2000); // 每 2 秒自动更新
+        setInterval(() => this.loadNotes(), 2000); 
     }
 
-    // 更新时间戳
+    // function to update timestamp
     updateTimestamp() {
         const now = new Date();
         const formattedTime = now.toLocaleTimeString();
         this.timestampElement.textContent = `Updated at: ${formattedTime}`;
     }
 
-    // 加载笔记
+    // fucntion to load notes from localStorage
     loadNotes() {
         const savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
         this.renderNotes(savedNotes);
         this.updateTimestamp();
     }
 
-    // 渲染笔记到页面
+    // function to render notes
     renderNotes(notes) {
-        this.notesContainer.innerHTML = ''; // 清空容器
+        this.notesContainer.innerHTML = ''; 
         notes.forEach(note => {
             const noteElement = document.createElement('div');
             noteElement.classList.add('note');
@@ -38,7 +44,7 @@ class NoteReader {
     }
 }
 
-// 启动应用
+// create a new instance of NoteReader when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new NoteReader('notes', 'timestamp');
 });

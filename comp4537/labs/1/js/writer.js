@@ -1,9 +1,9 @@
 /**
 DISCLOSURE: help of ChatGPT for checking some js,bom and dom functions
-- Key areas of inquiry included:
-  - Dynamically positioning buttons within the viewport using the `shuffleButtons` method.
-  - Implementing game logic for sequence validation in the `enableMemoryTest` method.
-  - Implement delays for better game flow through promises and `async/await`.
+Key functionalities implemented:
+- JSON strings in localStorage.
+- Parsing JSON strings from localStorage.
+- JavaScript's Date object like isplaying and updating time.
 */
 
 class NoteWriter {
@@ -14,21 +14,20 @@ class NoteWriter {
         this.init();
     }
 
-    // 初始化
     init() {
         this.loadNotes();
         this.addNoteButton.addEventListener('click', () => this.addNote());
-        setInterval(() => this.saveNotes(), 2000); // 每 2 秒保存
+        setInterval(() => this.saveNotes(), 2000); 
     }
 
-    // 更新时间戳
+    // function to update timestamp
     updateTimestamp() {
         const now = new Date();
         const formattedTime = now.toLocaleTimeString();
         this.timestampElement.textContent = `Stored at: ${formattedTime}`;
     }
 
-    // 保存笔记到 localStorage
+    // fucntion to save the notes arrary to localStorage as a json string
     saveNotes() {
         const notes = [];
         const noteElements = this.notesContainer.querySelectorAll('.note textarea');
@@ -37,14 +36,14 @@ class NoteWriter {
         this.updateTimestamp();
     }
 
-    // 从 localStorage 加载笔记
+    // fucntion to load the notes from localStorage
     loadNotes() {
         const savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
         savedNotes.forEach(content => this.createNoteElement(content));
         this.updateTimestamp();
     }
 
-    // 创建单个笔记元素
+    // dynamically create a new note element and a remove button
     createNoteElement(content = '') {
         const noteElement = document.createElement('div');
         noteElement.classList.add('note');
@@ -57,7 +56,7 @@ class NoteWriter {
         `;
         this.notesContainer.appendChild(noteElement);
 
-        // 绑定删除按钮事件
+        // add event listener to remove button
         const removeButton = noteElement.querySelector('.remove');
         removeButton.addEventListener('click', () => {
             noteElement.remove();
@@ -65,14 +64,14 @@ class NoteWriter {
         });
     }
 
-    // 添加新笔记
+    // add a new note element to the notes container
     addNote() {
         this.createNoteElement();
         this.saveNotes();
     }
 }
 
-// 启动应用
+// create a new instance of NoteWriter when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new NoteWriter('notes', 'addNote', 'timestamp');
 });
