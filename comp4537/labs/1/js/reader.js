@@ -15,7 +15,7 @@ class NoteReader {
     // init function to load notes and update timestamp
     init() {
         this.loadNotes();
-        setInterval(() => this.loadNotes(), 2000); 
+        setInterval(() => this.loadNotes(), 2000);
     }
 
     // function to update timestamp
@@ -34,7 +34,7 @@ class NoteReader {
 
     // function to render notes
     renderNotes(notes) {
-        this.notesContainer.innerHTML = ''; 
+        this.notesContainer.innerHTML = '';
         notes.forEach(note => {
             const noteElement = document.createElement('div');
             noteElement.classList.add('note');

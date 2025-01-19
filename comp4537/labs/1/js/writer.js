@@ -44,7 +44,7 @@ class NoteWriter {
     }
 
     // dynamically create a new note element and a remove button
-    createNoteElement(content = '') {
+    createNoteElement(content = '') { // default content is an empty string
         const noteElement = document.createElement('div');
         noteElement.classList.add('note');
         noteElement.innerHTML = `
