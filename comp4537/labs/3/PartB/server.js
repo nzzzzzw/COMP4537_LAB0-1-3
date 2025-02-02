@@ -12,14 +12,19 @@ class MyServer {
 
     handleRequest(req, res) {
         const parsedUrl = url.parse(req.url, true);
-        const name = parsedUrl.query.name || 'Guest';
-        const currentTime = Utils.getDate();
-
-        // 使用 en.js 生成 HTML 消息
-        const message = `<p style="color:blue;">${en.greeting(name)} ${en.serverTime(currentTime)}</p>`;
-
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(message);
+        
+        if (parsedUrl.pathname === '/comp4537/labs/3/getDate') {  // 确保匹配你的 URL 结构
+            const name = parsedUrl.query.name || 'Guest';
+            const currentTime = Utils.getDate();
+            
+            const message = `<p style="color:blue;">${en.greeting(name)} ${en.serverTime(currentTime)}</p>`;
+    
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(message);
+        } else {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('404 Not Found');
+        }
     }
 
     start() {
